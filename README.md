@@ -122,8 +122,7 @@ New versions of the workflow appear as new releases in this repository. In order
 
 ## Input
 
-The workflow supports mzML and mzXML formats of mass spectrometry data. Internally, all input files will be converted to mzML, so you can save some time on the workflow execution if your data are already in this format.
-Make sure that input files contain centroided data.
+The workflow supports mzML and mzXML formats of mass spectrometry data. However, mzML format is recommended to save time in the workflow execution, as internally, all input files are converted to mzML. Further, the use of mzML speed-up the node "Prepare results". Make sure that input files contain centroided data. This can be done with MS-Convert [peak-picking feature].
 
 ### IMPORTANT: Stub input file
 
@@ -267,6 +266,10 @@ Some errors can appear in the application log that interrupt workflow execution.
   <tr>
     <td><code>ERROR LoadWorkflowRunnable Errors during load: Status: DataLoadError: Optimus_v_1.0 0 loaded with error during data load</code></td>
     <td>Reset the workflow: right-click on the workflow item in <code>KNIME Explorer</code> and select <code>Reset</code> in the drop-down menu. Then, execute it again. The error should not appear again.</td>
+  </tr>
+   <tr>
+    <td><code>Node "Prepare results" is excessively long, or is not finishing</code></td>
+    <td>This will happen with large dataset when the option SAVE AS MGF is activated, and you are using mzXML format. This is issue can be solved by converting your file to mzML [with MSConvert], and rerun the workflow with this input files</td>
   </tr>
 </table>
  
